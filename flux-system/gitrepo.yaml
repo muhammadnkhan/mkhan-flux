@@ -1,0 +1,11 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: nginx-manifests
+  namespace: flux-system
+spec:
+  interval: 1m           # how often Flux polls for new commits
+  url: https://github.com/muhammadnkhan/mkhan-flux
+  ref:
+    branch: main
+

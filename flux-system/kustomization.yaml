@@ -1,0 +1,14 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: nginx-app
+  namespace: flux-system
+spec:
+  interval: 5m                   # re-render & reconcile every 5 minutes
+  path: "./deployment-files" # path inside the Git repo where your kustomization.yaml lives
+  prune: true                    # delete any objects no longer defined in Git
+  sourceRef:
+    kind: GitRepository
+    name: nginx-manifests        # must match metadata.name above
+  targetNamespace: default       # where to apply these resources in the cluster
+
